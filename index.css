@@ -1,0 +1,86 @@
+body {
+  background-color: cornsilk;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+}
+
+form.sutta-selector-form {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+form.sutta-selector-form label {
+  font-family: sans-serif;
+  font-size: 0.8rem;
+}
+
+select {
+  display: block;
+}
+
+input.sutta-submit-button {
+  /* height: 1.3rem; */
+  border-radius: 5px;
+  border: solid 1px gainsboro;
+  padding: 0.3rem;
+  background-color: aquamarine;
+}
+
+table.sutta-table {
+  border-collapse: collapse;
+  background-color: white;
+  width: 100%;
+}
+
+td {
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+
+td.id-class {
+  font-family: monospace;
+  padding: 0px 0px 0px 5px;
+}
+
+td.id-class:hover {
+  background-color: beige;
+}
+
+td.pali {
+  width: 20rem;
+  font-family: sans-serif;
+  font-size: 0.9rem;
+}
+
+tr.utility-row {
+  height: 3rem;
+}
+
+td.utility-row-cell {
+  background-color: lavender;
+  border-left: 2rem solid white;
+  border-radius: 0 0 0 40px;
+}
+
+.hidden {
+  display: none;
+}
+
+@media only screen and (max-width: 975px) {
+  td.pali {
+    width: 8rem;
+    font-size: 0.6rem;
+  }
+
+  td.id-class {
+    font-size: 0.5rem;
+    padding: 0;
+    font-family: sans-serif;
+  }
+}
