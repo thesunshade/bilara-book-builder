@@ -25,3 +25,5 @@ suttaSelector("sutta-selector");
 // showPersonsStandoffButton.addEventListener("click", () => {
 //   console.log(personsStandoff);
 // });
+
+buildTable("kn/dhp/dhp1-20");
