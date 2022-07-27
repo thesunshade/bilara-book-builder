@@ -2,10 +2,44 @@ body {
   background-color: cornsilk;
 }
 
-header {
+h1 {
+  font-weight: normal;
+}
+
+span.pli-lang {
+  display: block;
+  font-weight: bold;
+}
+span.eng-lang {
+  display: block;
+}
+
+p.pli-verse {
+  margin-bottom: 0.3rem;
+  margin-left: 1rem;
+}
+p.eng-verse {
+  margin-bottom: 1rem;
+  margin-top: 0rem;
+  margin-left: 1rem;
+}
+
+span.pli-lang {
+  display: block;
+  font-weight: bold;
+}
+
+span.verse-line {
+  color: blue;
+}
+
+/* header {
   display: flex;
   flex-direction: row;
   margin-bottom: 1rem;
+} */
+header {
+  color: red;
 }
 
 form.sutta-selector-form {

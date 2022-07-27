@@ -1,29 +1,33 @@
 import buildTable from "./buildTable.js";
+import buildGeya from "./buildGeya.js";
 // import { dppn } from "./DPPN.js";
-import suttaSelector from "./suttaSelector.js";
+import { kn } from "./kn.js";
 
-export const suttaTable = document.querySelector("#sutta-table");
-export let personsStandoff = {};
-suttaSelector("sutta-selector");
+export const suttaTable = document.querySelector("#sutta-html");
 
-// loadSuttaForm.addEventListener("submit", e => {
-//   e.preventDefault();
-//   personsStandoff.length = 0; // clears personsStandoff each time new sutta is loaded
-//   personsStandoff = buildTable(requestedNikaya.value, requestedSutta.value);
-//   console.log(personsStandoff);
+suttaTable.innerHTML = "";
+
+// kn.Dhp.forEach(chapter => {
+//   suttaTable.innerHTML += `<article id="${chapter}"></article>`;
+//   buildTable(`kn/dhp/dhp${chapter}`, chapter);
 // });
 
-// builds words from dictionary
-// let words = [];
-// dppn.forEach(item => {
-//   words.push(item.word);
-// });
-// console.log(words);
+kn.Iti.forEach(chapter => {
+  suttaTable.innerHTML += `<article id="${chapter}"></article>`;
+  buildGeya(`kn/iti/${chapter}`, chapter, "4");
+});
 
-// // logs currtent standoff to console
-// const showPersonsStandoffButton = document.querySelector("#show-personsStandoff");
-// showPersonsStandoffButton.addEventListener("click", () => {
-//   console.log(personsStandoff);
-// });
+// for (let i = 1; i <= 9; i++) {
+//   suttaTable.innerHTML += `<article id="${i}"></article>`;
+//   buildGeya(`kn/kp/kp${i}`, i, 2);
+// }
 
-buildTable("kn/dhp/dhp1-20");
+// function fetchAll(slug) {
+//   const root = fetch(`./root/${slug}_root-pli-ms.json`).then(response => response.json());
+//   const translation = fetch(`./translation/${slug}_translation-en-sujato.json`).then(response => response.json());
+//   const html = fetch(`./html/${slug}_html.json`).then(response => response.json());
+//   Promise.all([root, translation, html]).then(responses => {
+//     console.log(responses);
+//   });
+// }
+// fetchAll("kn/kp/kp1");
