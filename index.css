@@ -2,8 +2,36 @@ body {
   background-color: cornsilk;
 }
 
-h1 {
+.controls {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1rem;
+}
+
+h1,
+h2 {
   font-weight: normal;
+}
+
+h1:before {
+  content: "<h1>";
+  font-size: 1rem;
+}
+h2:before {
+  content: "<h2>";
+  font-size: 1rem;
+}
+
+h1.section {
+  text-align: center;
+}
+
+h1.chapter {
+  color: green;
+}
+
+h2.sutta-title {
+  color: purple;
 }
 
 span.pli-lang {
@@ -38,9 +66,9 @@ span.verse-line {
   flex-direction: row;
   margin-bottom: 1rem;
 } */
-header {
+/* header {
   color: red;
-}
+} */
 
 form.sutta-selector-form {
   display: flex;

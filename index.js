@@ -1,33 +1,45 @@
-import buildTable from "./buildTable.js";
 import buildGeya from "./buildGeya.js";
-// import { dppn } from "./DPPN.js";
-import { kn } from "./kn.js";
+import { books } from "./books.js";
 
 export const suttaTable = document.querySelector("#sutta-html");
 
 suttaTable.innerHTML = "";
 
-// kn.Dhp.forEach(chapter => {
-//   suttaTable.innerHTML += `<article id="${chapter}"></article>`;
-//   buildTable(`kn/dhp/dhp${chapter}`, chapter);
-// });
-
-kn.Iti.forEach(chapter => {
-  suttaTable.innerHTML += `<article id="${chapter}"></article>`;
-  buildGeya(`kn/iti/${chapter}`, chapter, "4");
+// MAKE BOOK BUTTON
+const makeBookButton = document.getElementById("make-the-book");
+makeBookButton.addEventListener("click", () => {
+  suttaTable.innerHTML = "";
+  makeTheBook();
 });
 
-// for (let i = 1; i <= 9; i++) {
-//   suttaTable.innerHTML += `<article id="${i}"></article>`;
-//   buildGeya(`kn/kp/kp${i}`, i, 2);
-// }
+// COPY BUTTON
+const copyButton = document.getElementById("copy");
+copyButton.addEventListener("click", () => {
+  navigator.clipboard.writeText(suttaTable.innerHTML);
+});
 
-// function fetchAll(slug) {
-//   const root = fetch(`./root/${slug}_root-pli-ms.json`).then(response => response.json());
-//   const translation = fetch(`./translation/${slug}_translation-en-sujato.json`).then(response => response.json());
-//   const html = fetch(`./html/${slug}_html.json`).then(response => response.json());
-//   Promise.all([root, translation, html]).then(responses => {
-//     console.log(responses);
-//   });
-// }
-// fetchAll("kn/kp/kp1");
+function makeTheBook() {
+  const translator = document.getElementById("translator").value;
+  const book = document.getElementById("book").value;
+  const bookContents = books[book];
+
+  bookContents.forEach(article => {
+    if (/chapter/.test(article) || /section/.test(article)) {
+      // this detects when there is a chapter title page that must be created
+      let [id, paliTitle, englishTitle] = article.split("|");
+      suttaTable.innerHTML += `<article id="${id}">
+    <div class="title">
+      <h1 title="${englishTitle}" class="${id.replace(
+        /\d+/,
+        ""
+      )}"><span class="pli-lang">${paliTitle}</span> <span class="eng-lang">${englishTitle}</span></h1>
+  </div>
+    </article>\n`;
+    } else {
+      // this adds the article tag into the dom for each sutta.
+      suttaTable.innerHTML += `<article id="${article}"></article>\n`;
+      // This starts the process of building the sutta that will be put into that above dom item when the process is finished.
+      buildGeya(`${book}/${article}`, article, translator);
+    }
+  });
+}
