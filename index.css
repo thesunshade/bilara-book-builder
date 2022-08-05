@@ -30,6 +30,7 @@ h2:before {
 
 h1.section {
   text-align: center;
+  margin-top: 3rem !important;
 }
 
 h1.chapter {
@@ -38,6 +39,61 @@ h1.chapter {
 
 h2.sutta-title {
   color: purple;
+}
+
+.sutta-number {
+  font-size: 1rem;
+}
+
+header ul {
+  display: none;
+}
+
+.hide-content p,
+.hide-content ol {
+  display: none;
+}
+.hide-content span {
+  display: inline !important;
+}
+.hide-content h1,
+.hide-content h2,
+.hide-content h3,
+.hide-content h4,
+.hide-content h5,
+.hide-content h6 {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  font-size: 1rem;
+}
+
+.hide-content h2 {
+  margin-left: 2rem;
+}
+.hide-content h3 {
+  margin-left: 4rem;
+  color: gray;
+}
+.hide-content h4 {
+  margin-left: 6rem;
+  color: gray;
+}
+.hide-content h5 {
+  margin-left: 8rem;
+  color: gray;
+}
+.hide-content h6 {
+  margin-left: 10rem;
+  color: gray;
+}
+
+.hide-content h1.chapter {
+  margin-top: 1rem !important;
+}
+
+.hide-content h1::before,
+.hide-content h2::before {
+  content: "";
 }
 
 span.pli-lang {

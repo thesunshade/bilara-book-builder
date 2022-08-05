@@ -1,7 +1,6 @@
 export default function buildGeya(slug, article, translator) {
   slug = slug.toLowerCase();
   let html = "";
-
   let suttaNumber = article.match(/(\d*\.*\d+)$/g)[0];
 
   // fetch the information to build the sutta
@@ -13,9 +12,7 @@ export default function buildGeya(slug, article, translator) {
 
   // work with all the data once it is fetched
   Promise.all([rootResponse, translationResponse, htmlResponse]).then(responses => {
-    // console.log(responses);
     let [paliData, transData, htmlData] = responses;
-
     let paliVerse = "<p class='pli-verse'>";
     let englishVerse = "<p class='eng-verse'>";
     let inAVerse = false;
@@ -24,12 +21,13 @@ export default function buildGeya(slug, article, translator) {
       let htmlWrapper = htmlData[section];
 
       if (/<h1 class='sutta-title'>/.test(htmlWrapper)) {
-        if (/an/.test(slug)) {
-          paliData[section] = paliData[section].replace(/^\d+?\.*\d* ([A-Za-zĀāīūñÑ])/, "$1");
+        if (/an/.test(slug) || /thag/.test(slug)) {
+          paliData[section] = paliData[section].replace(/^\d+?\.*\d*?\.* ([A-Za-zĀāīūñÑ])/, "$1");
         }
         paliData[section] = `<span class="sutta-number">${suttaNumber}</span> ${paliData[section]}`;
       }
 
+      // if Pali title and English title are identical, delete pali
       if (/<h/.test(htmlWrapper) && paliData[section] === transData[section]) {
         paliData[section] = "";
       }
