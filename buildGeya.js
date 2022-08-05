@@ -4,9 +4,6 @@ export default function buildGeya(slug, article, translator) {
 
   let suttaNumber = article.match(/(\d*\.*\d+)$/g)[0];
 
-  // suttaTable.innerHTML = "";
-  // let verseRange = "";
-
   // fetch the information to build the sutta
   const rootResponse = fetch(`./root/${slug}_root-pli-ms.json`).then(response => response.json());
   const translationResponse = fetch(`./translation/${slug}_translation-en-${translator}.json`).then(response =>
@@ -27,7 +24,14 @@ export default function buildGeya(slug, article, translator) {
       let htmlWrapper = htmlData[section];
 
       if (/<h1 class='sutta-title'>/.test(htmlWrapper)) {
+        if (/an/.test(slug)) {
+          paliData[section] = paliData[section].replace(/^\d+?\.*\d* ([A-Za-zĀāīūñÑ])/, "$1");
+        }
         paliData[section] = `<span class="sutta-number">${suttaNumber}</span> ${paliData[section]}`;
+      }
+
+      if (/<h/.test(htmlWrapper) && paliData[section] === transData[section]) {
+        paliData[section] = "";
       }
 
       if (!/mn/.test(slug)) {
