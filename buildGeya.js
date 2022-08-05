@@ -1,7 +1,9 @@
 export default function buildGeya(slug, article, translator) {
   slug = slug.toLowerCase();
   let html = "";
-  // let suttaNumber = "";
+
+  let suttaNumber = article.match(/(\d*\.*\d+)$/g)[0];
+
   // suttaTable.innerHTML = "";
   // let verseRange = "";
 
@@ -15,7 +17,7 @@ export default function buildGeya(slug, article, translator) {
   // work with all the data once it is fetched
   Promise.all([rootResponse, translationResponse, htmlResponse]).then(responses => {
     // console.log(responses);
-    const [paliData, transData, htmlData] = responses;
+    let [paliData, transData, htmlData] = responses;
 
     let paliVerse = "<p class='pli-verse'>";
     let englishVerse = "<p class='eng-verse'>";
@@ -23,6 +25,10 @@ export default function buildGeya(slug, article, translator) {
 
     Object.keys(paliData).forEach(section => {
       let htmlWrapper = htmlData[section];
+
+      if (/<h1 class='sutta-title'>/.test(htmlWrapper)) {
+        paliData[section] = `<span class="sutta-number">${suttaNumber}</span> ${paliData[section]}`;
+      }
 
       if (!/mn/.test(slug)) {
         htmlWrapper = htmlWrapper.replace("<h1", "<h2").replace("</h1", "</h2");

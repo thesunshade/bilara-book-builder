@@ -13,8 +13,22 @@
 <body>
     <div class="controls">
         <button id="make-the-book">Make Book</button>
-        <label><input id="translator" type="text" value="soma">Translator</label>
-        <label><input id="book" type="text" value="kn/thig">book</label>
+        <select id="selection">
+            <option value="dn|sujato">Dīgha Nikāya | Bhante Sujato</option>
+            <option value="mn|sujato">Majjhima Nikāya | Bhante Sujato</option>
+            <option value="sn|sujato">Saṁyutta Nikāya | Bhante Sujato</option>
+            <option value="an|sujato">Aṅguttara Nikāya | Bhante Sujato</option>
+            <option value="kn/dhp|sujato">Dhammapada | Bhante Sujato</option>
+            <option value="kn/ud|sujato">Udāna | Bhante Sujato</option>
+            <option value="kn/iti|sujato">Itivuttaka | Bhante Sujato</option>
+            <option value="kn/snp|sujato">Sutta Nipāta | Bhante Sujato</option>
+            <option value="kn/thag|sujato">Theragāthā | Bhante Sujato</option>
+            <option value="kn/thig|soma">Therīgāthā | Ayya Soma</option>
+            <option value="kn/thig|sujato">Therīgāthā | Bhante Sujato</option>
+        </select>
+
+        <!-- <label>Translator:<input id="translator" type="text" value="soma"></label>
+        <label>Book:<input id="book" type="text" value="kn/thig"></label> -->
         <button id="copy">Copy Book</button>
     </div>
     <div id="standoff-display-area" class="standoff-display-area"></div>

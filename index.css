@@ -1,11 +1,17 @@
 body {
   background-color: cornsilk;
+  margin: 0rem;
 }
 
 .controls {
   display: flex;
   flex-direction: row;
   column-gap: 1rem;
+  background-color: rgb(45, 31, 25);
+  padding: 1rem;
+  margin: 0rem;
+  width: 100vw;
+  color: cornsilk;
 }
 
 h1,
@@ -94,10 +100,10 @@ input.sutta-submit-button {
   background-color: aquamarine;
 }
 
-table.sutta-table {
-  border-collapse: collapse;
-  background-color: white;
-  width: 100%;
+.sutta-table {
+  max-width: 1000px;
+  margin: auto;
+  padding: 1rem;
 }
 
 td {

@@ -19,8 +19,10 @@ copyButton.addEventListener("click", () => {
 });
 
 function makeTheBook() {
-  const translator = document.getElementById("translator").value;
-  const book = document.getElementById("book").value;
+  const selection = document.getElementById("selection").value;
+  const [book, translator] = selection.split("|");
+  // const translator = document.getElementById("translator").value;
+  // const book = document.getElementById("book").value;
   const bookContents = books[book];
 
   bookContents.forEach(article => {
