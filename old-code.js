@@ -9,3 +9,12 @@
 //     (line === "0") & (subLine === titleLineNumber) ? `<span class="sutta-number">${verse}.&nbsp;</span>` : ""
 //   }${paliData[section]}</span><span class="eng-lang">${transData[section]}</span>${closeHtml}`;
 // }
+
+// function parseSectionId(sectionId) {
+//   // below works with thig
+//   const numbers = sectionId.match(/[a-z]+\d+\.(\d+):(\d)\.*(\d*)/);
+//   // below works with iti
+//   // const numbers = sectionId.match(/[a-z]+(\d+):(\d)\.*(\d*)/);
+//   // verse(sutta), line, subLine
+//   return [numbers[1], numbers[2], numbers[3]];
+// }

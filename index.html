@@ -12,25 +12,34 @@
 
 <body class="">
     <div class="controls">
-        <img src="./favicon.png" height="30px">
-        <button id="make-the-book">Make It</button>
-        <select id="selection">
-            <option value="dn|sujato">Dīgha Nikāya | B. Sujato</option>
-            <option value="mn|sujato">Majjhima Nikāya | B. Sujato</option>
-            <option value="sn|sujato">Saṁyutta Nikāya | B. Sujato</option>
-            <option value="an|sujato">Aṅguttara Nikāya | B. Sujato</option>
-            <option value="kn/dhp|sujato">Dhammapada | B. Sujato</option>
-            <option value="kn/ud|sujato">Udāna | B. Sujato</option>
-            <option value="kn/iti|sujato">Itivuttaka | B. Sujato</option>
-            <option value="kn/snp|sujato">Sutta Nipāta | B. Sujato</option>
-            <option value="kn/thag|sujato">Theragāthā | B. Sujato</option>
-            <option value="kn/thig|soma">Therīgāthā | Ayya Soma</option>
-            <option value="kn/thig|sujato">Therīgāthā | B. Sujato</option>
-        </select>
+        <div id="row-one">
+            <img src="./favicon.png" height="25px">
+            <select id="selection">
+                <option value="dn|sujato">Dīgha Nikāya | B. Sujato</option>
+                <option value="mn|sujato">Majjhima Nikāya | B. Sujato</option>
+                <!-- <option value="mn|suddaso">Majjhima Nikāya | B. Suddāso</option> -->
+                <option value="sn|sujato">Saṁyutta Nikāya | B. Sujato</option>
+                <option value="an|sujato">Aṅguttara Nikāya | B. Sujato</option>
+                <option value="kn/dhp|sujato">Dhammapada | B. Sujato</option>
+                <option value="kn/ud|sujato">Udāna | B. Sujato</option>
+                <option value="kn/iti|sujato">Itivuttaka | B. Sujato</option>
+                <option value="kn/snp|sujato">Sutta Nipāta | B. Sujato</option>
+                <option value="kn/thag|sujato">Theragāthā | B. Sujato</option>
+                <option value="kn/thig|soma">Therīgāthā | Ayya Soma</option>
+                <option value="kn/thig|sujato">Therīgāthā | B. Sujato</option>
+            </select>
+            <button id="make-the-book">Make It</button>
+            <button id="copy">Copy It</button>
+            <button id="toc">Toggle ToC</button>
+            <span id="counter"></span>
+        </div>
 
-        <!-- <label>Translator:<input id="translator" type="text" value="soma"></label>
-        <label>Book:<input id="book" type="text" value="kn/thig"></label> -->
-        <button id="copy">Copy It</button>
+        <div id="row-two">
+            <label><input type="checkbox" id="step-down">Step down sutta headings</label>
+            <label><input type="checkbox" id="flatten">Flatten subheadings to classes</label>
+            <label><input type="checkbox" id="pali">Include Pāli</label>
+            <label><input type="checkbox" id="local">Build from local</label>
+        </div>
     </div>
     <div id="standoff-display-area" class="standoff-display-area"></div>
     <div id="sutta-html" class="sutta-table"></div>

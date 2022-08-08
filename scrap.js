@@ -5,7 +5,13 @@
 <h1>(.+?)<br.+?PaliHeading">(.+?)</span></h1>
 "section|\2|\1",
 
-
+45.103 Paṭhamapācīnaninnasutta Slanting East
+104–108. Dutiyādipācīnaninnasuttapañcaka Five Discourses on Sloping to the East
+45.109 Paṭhamasamuddaninnasutta Slanting to the Ocean
+110–114. Dutiyādisamuddaninnasutta Slanting to the Ocean
+45.115 Paṭhamapācīnaninnasutta Slanting East
+116–120. Dutiyādipācīnaninnasutta Slanting East
+45.121 Paṭhamasamuddaninnasutta Slanting to the Ocean 
 
 
 
