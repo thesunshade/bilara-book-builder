@@ -23,10 +23,6 @@ button {
   padding-right: 10px;
 }
 
-button:active {
-  background-color: aqua;
-}
-
 #row-one,
 #row-two {
   display: flex;
