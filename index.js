@@ -17,7 +17,7 @@ makeBookButton.addEventListener("click", () => {
   suttaTable.innerHTML = "";
   const progressLable = document.getElementById("progress-label");
   const progressBar = document.getElementById("progress");
-  progressLable.innerHTML = "Working…";
+  progressLable.innerHTML = "Working<span class='blink'>…</span>";
   progressBar.style.width = "0%";
   setTimeout(() => {
     makeTheBook();
@@ -42,8 +42,8 @@ function makeTheBook() {
   const [slug, translator] = selection.split("|");
   const bookContents = books[slug];
   localStorage.completionCounter = 0;
-  const progressLable = document.getElementById("progress-label");
-  progressLable.innerHTML = "Working…";
+  // const progressLable = document.getElementById("progress-label");
+  // progressLable.innerHTML = "Working…";
   var start = new Date();
   buildTitlePage(slug, translator);
 
