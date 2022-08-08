@@ -16,11 +16,38 @@ body {
   top: 0px;
 }
 
+button {
+  border: solid 1px gray;
+  background-color: e8e9ed;
+  border-radius: 5px;
+}
+
+button:active {
+  background-color: aqua;
+}
+
 #row-one,
 #row-two {
   display: flex;
   flex-direction: row;
   column-gap: 1rem;
+}
+
+#progress-bar {
+  width: 100px;
+  height: 25px;
+  /* background-color: grey; */
+  border: solid 1px rgb(67, 67, 67);
+}
+
+#progress {
+  background-color: green;
+  width: 0%;
+  height: 23px;
+  padding: 2px 0px 0px 0px;
+}
+#progress-label {
+  padding: 2px 0px 0px 4px;
 }
 
 h1,
@@ -146,77 +173,10 @@ span.pli-lang {
   font-weight: bold;
 }
 
-span.verse-line {
-  color: blue;
-}
-
-/* header {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 1rem;
-} */
-/* header {
-  color: red;
-} */
-
-form.sutta-selector-form {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  align-items: flex-end;
-}
-
-form.sutta-selector-form label {
-  font-family: sans-serif;
-  font-size: 0.8rem;
-}
-
-select {
-  display: block;
-}
-
-input.sutta-submit-button {
-  /* height: 1.3rem; */
-  border-radius: 5px;
-  border: solid 1px gainsboro;
-  padding: 0.3rem;
-  background-color: aquamarine;
-}
-
 .sutta-table {
   max-width: 1000px;
   margin: auto;
   padding: 1rem;
-}
-
-td {
-  border: 1px solid #ddd;
-  padding: 5px;
-}
-
-td.id-class {
-  font-family: monospace;
-  padding: 0px 0px 0px 5px;
-}
-
-td.id-class:hover {
-  background-color: beige;
-}
-
-td.pali {
-  width: 20rem;
-  font-family: sans-serif;
-  font-size: 0.9rem;
-}
-
-tr.utility-row {
-  height: 3rem;
-}
-
-td.utility-row-cell {
-  background-color: lavender;
-  border-left: 2rem solid white;
-  border-radius: 0 0 0 40px;
 }
 
 .hidden {

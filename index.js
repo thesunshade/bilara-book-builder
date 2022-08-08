@@ -4,8 +4,9 @@ import optionSettings from "./optionSettings.js";
 import buildTitlePage from "./buildTitlePage.js";
 
 const suttaTable = document.querySelector("#sutta-html");
-const counter = document.querySelector("#counter");
+// const counter = document.querySelector("#counter");
 const body = document.querySelector("body");
+
 optionSettings();
 
 suttaTable.innerHTML = "";
@@ -14,7 +15,13 @@ suttaTable.innerHTML = "";
 const makeBookButton = document.getElementById("make-the-book");
 makeBookButton.addEventListener("click", () => {
   suttaTable.innerHTML = "";
-  makeTheBook();
+  const progressLable = document.getElementById("progress-label");
+  const progressBar = document.getElementById("progress");
+  progressLable.innerHTML = "Working…";
+  progressBar.style.width = "0%";
+  setTimeout(() => {
+    makeTheBook();
+  }, 50);
 });
 
 // COPY BUTTON
@@ -35,6 +42,8 @@ function makeTheBook() {
   const [slug, translator] = selection.split("|");
   const bookContents = books[slug];
   localStorage.completionCounter = 0;
+  const progressLable = document.getElementById("progress-label");
+  progressLable.innerHTML = "Working…";
   var start = new Date();
   buildTitlePage(slug, translator);
 
@@ -51,9 +60,15 @@ function makeTheBook() {
   </div>
     </article>\n`;
       localStorage.completionCounter++;
-      counter.innerHTML = `${localStorage.completionCounter}/${bookContents.length}`;
+      // counter.innerHTML = `${localStorage.completionCounter}/${bookContents.length}`;
+      const progressBar = document.getElementById("progress");
+      const width = (localStorage.completionCounter / bookContents.length) * 100;
+      progressBar.style.width = width + "%";
+
       if (localStorage.completionCounter === bookContents.length) {
-        alert("Book is complete");
+        // alert("Book is complete");
+        const progressLable = document.getElementById("progress-label");
+        progressLable.innerHTML = "Finished";
         var finish = new Date();
         console.log(finish - start);
       }

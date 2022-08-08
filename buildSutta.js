@@ -6,7 +6,7 @@ import buildSuttaHtml from "./buildSuttaHtml.js";
 export default function buildSutta(slug, article, translator, bookLength, start) {
   slug = slug.toLowerCase();
 
-  const counter = document.querySelector("#counter");
+  // const counter = document.querySelector("#counter");
 
   if (JSON.parse(localStorage.local) === true) {
     // fetch the information to build the sutta from LOCAL

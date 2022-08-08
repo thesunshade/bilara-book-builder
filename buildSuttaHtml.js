@@ -115,10 +115,17 @@ export default function buildSuttaHtml(paliData, transData, htmlData, article, b
   html = html.replace("</article>", "").replace(/<article id=".+?">/, "");
   articleElement.outerHTML = html;
   localStorage.completionCounter++;
-  counter.innerHTML = `${localStorage.completionCounter}/${bookLength}`;
+  //   counter.innerHTML = `${localStorage.completionCounter}/${bookLength}`;
+  const progressBar = document.getElementById("progress");
+  const width = (localStorage.completionCounter / bookLength) * 100;
+  progressBar.style.width = width + "%";
+
   if (localStorage.completionCounter == bookLength) {
     var finish = new Date();
     console.log("seconds " + (finish - start) / 1000);
-    alert("Book is complete");
+    // alert("Book is complete");
+
+    const progressLable = document.getElementById("progress-label");
+    progressLable.innerHTML = "Finished";
   }
 }
