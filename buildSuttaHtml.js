@@ -81,34 +81,28 @@ export default function buildSuttaHtml(paliData, transData, htmlData, article, b
       inAVerse = true;
     }
     if (inAVerse) {
-      paliVerse += `<span class="pli-lang" id="${section}">${paliData[section]}</span>\n`;
-      englishVerse += `${transData[section] ? `<span class="eng-lang">${transData[section]}</span>\n` : ""}`;
+      paliVerse += `<span class="pli-lang" id="${section}">${paliData[section]}</span>`;
+      englishVerse += `${transData[section] ? `<span class="eng-lang">${transData[section]}</span>` : ""}`;
       if (/<span class='verse-line'>{}<\/span><\/p>/.test(htmlData[section])) {
         inAVerse = false;
-        html += paliVerse + "</p>\n" + englishVerse + "</p>\n";
-        paliVerse = "<p class='pli-verse'>\n";
-        englishVerse = "<p class='eng-verse'>\n";
+        html += paliVerse + "</p>" + englishVerse + "</p>";
+        paliVerse = "<p class='pli-verse'>";
+        englishVerse = "<p class='eng-verse'>";
       }
     } else {
       // not in a verse
       let translationPart = "";
       // test for including Pali
       if (JSON.parse(localStorage.pali)) {
-        translationPart = `<span class="eng-lang" data-eng="${section}">${transData[section]}</span>`;
+        translationPart = `<span class="eng-lang">${transData[section]}</span>`;
       } else {
         translationPart = `${transData[section]}`;
       }
 
       html += `${openHtml}
-        ${
-          paliData[section]
-            ? `<span class="pli-lang" data-pli="${section}">
-              ${paliData[section]}
-            </span>`
-            : ""
-        }
-          ${!transData[section] ? "" : translationPart}
-          ${closeHtml}\n`;
+        ${paliData[section] ? `<span class="pli-lang">${paliData[section]}</span>` : ""}${
+        !transData[section] ? "" : translationPart
+      }${closeHtml}`;
     }
   });
   const articleElement = document.getElementById(article);
