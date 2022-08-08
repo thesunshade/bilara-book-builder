@@ -7,7 +7,6 @@ const suttaTable = document.querySelector("#sutta-html");
 const counter = document.querySelector("#counter");
 const body = document.querySelector("body");
 optionSettings();
-console.log(/index.html/.test(location));
 
 suttaTable.innerHTML = "";
 

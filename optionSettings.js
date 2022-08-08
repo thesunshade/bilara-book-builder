@@ -46,4 +46,9 @@ export default function optionSettings() {
   localCheck.addEventListener("click", () => {
     localStorage.local = localCheck.checked;
   });
+  if (!/index.html/.test(location)) {
+    localStorage.local = false;
+    const localOption = document.getElementById("local-option");
+    localOption.remove();
+  }
 }
