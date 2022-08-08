@@ -10,14 +10,8 @@ export default function buildTitlePage(slug, translator) {
     .then(response => response.json())
     .then(data => {
       //   console.log(data[0]);
-      const {
-        author_name,
-        root_title,
-        translation_title,
-        translation_subtitle,
-        translation_process,
-        translation_description,
-      } = data[0];
+      const { author_name, translation_title, translation_subtitle, translation_process, translation_description } =
+        data[0];
       const { license_type, license_abbreviation, license_url, license_statement } = data[0].license;
       const { publication_date, edition_url, publisher } = data[0].edition[0];
 
@@ -38,7 +32,6 @@ export default function buildTitlePage(slug, translator) {
 <h2>License</h2>
 <div>${license_type} (<a href="${license_url}">${license_abbreviation}</a>). ${license_statement}</div>
 `;
-
       suttaTable.insertBefore(descriptionPageArticle, suttaTable.firstChild);
       suttaTable.insertBefore(titlePageArticle, suttaTable.firstChild);
     });

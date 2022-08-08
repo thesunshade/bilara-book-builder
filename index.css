@@ -20,6 +20,7 @@ button {
   border: solid 1px gray;
   background-color: e8e9ed;
   border-radius: 5px;
+  padding-right: 10px;
 }
 
 button:active {
@@ -31,16 +32,21 @@ button:active {
   display: flex;
   flex-direction: row;
   column-gap: 1rem;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
 }
 
-#progress-bar {
+#row-two {
+}
+
+#progress-outer {
   width: 100px;
   height: 25px;
   /* background-color: grey; */
-  border: solid 1px rgb(67, 67, 67);
+  border: solid 0px rgb(67, 67, 67);
 }
 
-#progress {
+#progress-bar {
   background-color: green;
   width: 0%;
   height: 23px;

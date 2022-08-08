@@ -5,11 +5,6 @@ export default function buildSuttaHtml(paliData, transData, htmlData, article, b
   let html = "";
   let suttaNumber = article.match(/(\d*\.*\d*-*\d+)$/g)[0].replace("-", "–");
 
-  // this adds a list of all ids to the top of the sutta
-  // html += `<p class="id-tags" style="overflow-wrap: break-word;font-family:monospace">${Object.keys(htmlData)
-  //   .toString()
-  //   .replace(/,/g, "&nbsp;| ")}</p>`;
-
   Object.keys(htmlData).forEach(section => {
     let htmlWrapper = htmlData[section];
 
@@ -109,8 +104,7 @@ export default function buildSuttaHtml(paliData, transData, htmlData, article, b
   html = html.replace("</article>", "").replace(/<article id=".+?">/, "");
   articleElement.outerHTML = html;
   localStorage.completionCounter++;
-  //   counter.innerHTML = `${localStorage.completionCounter}/${bookLength}`;
-  const progressBar = document.getElementById("progress");
+  const progressBar = document.getElementById("progress-bar");
   const width = (localStorage.completionCounter / bookLength) * 100;
   progressBar.style.width = width + "%";
 
