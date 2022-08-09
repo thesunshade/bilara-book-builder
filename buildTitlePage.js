@@ -9,11 +9,21 @@ export default function buildTitlePage(slug, translator) {
   fetch(`https://suttacentral.net/api/publication_info/${book}/en/${translator}`)
     .then(response => response.json())
     .then(data => {
-      //   console.log(data[0]);
-      const { author_name, translation_title, translation_subtitle, translation_process, translation_description } =
+      // console.log(data[0]);
+      let { author_name, translation_title, translation_subtitle, translation_process, translation_description } =
         data[0];
       const { license_type, license_abbreviation, license_url, license_statement } = data[0].license;
       const { publication_date, edition_url, publisher } = data[0].edition[0];
+
+      if (!author_name) {
+        const collaborators = data[0].collaborator;
+        let names = "";
+        collaborators.forEach((element, index) => {
+          console.log(element.author_name);
+          names = `${names} ${index === collaborators.length - 1 ? " & " : ""} ${element.author_name}`;
+        });
+        author_name = names;
+      }
 
       titlePageArticle.innerHTML = `<h1 class="center">${translation_title}</h1>
       <div class="center italic">${translation_subtitle}</div>

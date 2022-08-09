@@ -110,7 +110,7 @@ export default function buildSuttaHtml(paliData, transData, htmlData, article, b
 
   if (localStorage.completionCounter == bookLength) {
     var finish = new Date();
-    console.log("seconds " + (finish - start) / 1000);
+    // console.log("seconds " + (finish - start) / 1000);
     // alert("Book is complete");
 
     const progressLable = document.getElementById("progress-label");
