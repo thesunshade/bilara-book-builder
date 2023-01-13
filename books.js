@@ -3524,7 +3524,6 @@ export let books = {
     "an11.983-991",
     "an11.992-1151",
   ],
-
   "kn/kp": ["kp1", "kp2", "kp3", "kp4", "kp5", "kp6", "kp7", "kp8", "kp9"],
   "kn/dhp": [
     "dhp1-20",
