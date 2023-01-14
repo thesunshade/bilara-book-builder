@@ -5,7 +5,7 @@ export default function buildTitlePage(slug, translator) {
   const descriptionPageArticle = document.createElement("article");
   descriptionPageArticle.setAttribute("id", "description-page");
 
-  let book = slug.replace(/kn\//, "");
+  let book = slug.replace(/kn\//, "").replace(/complete/, "");
   fetch(`https://suttacentral.net/api/publication_info/${book}/en/${translator}`)
     .then(response => response.json())
     .then(data => {
