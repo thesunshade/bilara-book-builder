@@ -25,7 +25,6 @@
             <select id="selection">
                 <option value="dn|sujato">Dīgha Nikāya, B. Sujato</option>
                 <option value="mn|sujato">Majjhima Nikāya, B. Sujato</option>
-                <!-- <option value="mn|suddaso">Majjhima Nikāya,  B. Suddāso</option> -->
                 <option value="sn|sujato">Saṁyutta Nikāya, B. Sujato</option>
                 <option value="an|sujato">Aṅguttara Nikāya, B. Sujato</option>
                 <option value="kn/kp|sujato">Khuddakapāṭha, B. Sujato</option>
@@ -44,7 +43,7 @@
             </select>
             <button id="make-the-book">Make It</button>
             <button id="copy">Copy It</button>
-            <button id="toc">Toggle ToC</button>
+            <button id="toc" title="Hides most of the content of the book">Toggle ToC</button>
             <!-- <span id="counter"></span> -->
 
             <div id="progress-outer">
@@ -54,36 +53,76 @@
             </div>
         </div>
 
+
         <div id="row-two">
             <label><input type="checkbox" id="step-down">Step down sutta headings</label>
             <label><input type="checkbox" id="flatten">Flatten subheadings to classes</label>
             <label><input type="checkbox" id="pali">Include Pāli</label>
             <label id="local-option"><input type="checkbox" id="local">Build from local</label>
         </div>
-        <div>
 
-            <details>
-                <summary class="accordion">Info.</summary>
-                <div class="info-section">
-                    <p><b>Caution:</b> This tool will download complete copies of each book from SuttaCentral.net. For
-                        some
-                        books this will mean downloading <em>thousands</em> of suttas. Please use disgression.</p>
-                    <p>The heading tags you can see in the book in the viewer below are just there to show the
-                        underlying
-                        code. The code you copy will display as usual.</p>
-                    <p><b class="head">Toggle ToC</b> simply hides the content of the book.</p>
-                    <p><b class="head">Step down sutta headings</b> will decrease the heading levels for the text. This
-                        is useful if
-                        you
-                        want chapter pages to be a level above the suttas.</p>
-                    <p><b class="head">Flatten subheadings to classes</b> will change subheadings from h tags to p tags
-                        with classes for each level.</p>
-                </div>
-            </details>
-        </div>
+
+
+        <details>
+            <summary class="accordion">Info.</summary>
+            <div class="info-section">
+                <p><b>Caution:</b> This tool will download complete copies of each book from SuttaCentral.net. For
+                    some
+                    books this will mean downloading <em>thousands</em> of suttas. Please use disgression.</p>
+                <p>The heading tags you can see in the book in the viewer below are just there to show the
+                    underlying
+                    code. The code you copy will display as usual.</p>
+                <p><b class="head">Toggle ToC</b> simply hides most of the content of the book.</p>
+                <p><b class="head">Step down sutta headings</b> will decrease the heading levels for the text. This
+                    is useful if
+                    you
+                    want chapter pages to be a level above the suttas.</p>
+                <p><b class="head">Flatten subheadings to classes</b> will change subheadings from h tags to p tags
+                    with classes for each level.</p>
+            </div>
+        </details>
+
     </div>
     <div id="standoff-display-area" class="standoff-display-area"></div>
     <div id="sutta-html" class="sutta-table"></div>
+
+    <div class="links-area" style="text-align: center;">
+        <!--RF MAIN-->
+        <a href="http://readingfaithfully.org" title="Support for your sutta readng practice" rel="noreferrer"
+            target="_blank"><img width="20px" alt="ReadingFaithfully.org icon" src="./images/favicon-rf-tan.png"></a>
+        <!--DAILY-->
+        <a href="http://daily.readingfaithfully.org" title="Daily Suttas" rel="noreferrer" target="_blank"><img
+                width="20px" alt="Daily ReadingFaithfully.org icon" src="./images/favicon-drf-tan.png"></a>
+        <!--CITATION HELPER-->
+        <a href="https://sutta.readingfaithfully.org" title="Citation Lookup Tool" rel="noreferrer" target="_blank"><img
+                width="20px" src="./images/favicon-citaton-helper-tan.png" alt="Citation Lookup tool icon"></a>
+        <!--NAME SEARCH-->
+        <a href="https://name.readingfaithfully.org" title="Search for suttas by name" rel="noreferrer"
+            target="_blank"><img width="20px" src="./images/favicon-name-tan.png" alt="Sutta Name Search icon"></a>
+        <!--PED-->
+        <a href="https://ped.readingfaithfully.org" title="A lightweight interface for the PED" rel="noreferrer"
+            target="_blank"><img width="20px" src="./images/favicon-ped-tan.png"
+                alt="SuttaCentral.org Lightweight interface icon"></a>
+        <!--DPPN-->
+        <a href="https://dppn.readingfaithfully.org" title="A lightweight interface the Dictionary of Pali Proper Names"
+            rel="noreferrer" target="_blank"><img width="20px" src="./images/favicon-dppn-tan.png"
+                alt="DPPN search icon"></a>
+        <!--SC LIGHT-->
+        <a href="https://sc.readingfaithfully.org" title="An ultra lightweight interface for SuttaCentral.net"
+            rel="noreferrer" target="_blank"><img width="20px" src="./images/favicon-sc-light-tan.png"
+                alt="SC Light icon"></a>
+        <!--Labs-->
+        <a href="https://readingfaithfully.org/lab/" title="Other tools under development" rel="noreferrer"
+            target="_blank" class="labs">
+            <img class="icon" width="19px" src="./images/favicon-labs-tan.png" style="position: relative ; top: 1px"
+                alt="Labs icon" />
+        </a>
+        <!--GITHUB-->
+        <a href="https://github.com/thesunshade/bilara-book-builder/tree/main#readme"
+            title="The source code for this site" rel="noreferrer" target="_blank"><img width="20px"
+                src="./images/favicon-GitHub-tan.png" alt="GitHub icon"></a>
+    </div>
+
     <script type="module" src="index.js"></script>
 </body>
 

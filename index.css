@@ -7,12 +7,19 @@
 body {
   background-color: var(--light);
   margin: 0rem;
+  overflow-x: hidden;
+  /* Hide horizontal scrollbar */
 }
+
+.sutta-table {
+  width: 100vw
+}
+
 
 .controls {
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
+  row-gap: .5rem;
   background-color: var(--dark);
   padding: 1rem;
   margin: 0rem;
@@ -22,6 +29,8 @@ body {
   top: 0px;
   font-family: sans-serif;
 }
+
+
 
 .accordion {
   padding: 1px 3px 2px 5px;
@@ -261,4 +270,41 @@ span.pli-lang {
 
 .top-margin {
   margin-top: 1rem;
+}
+
+/* Footer links area */
+
+.links-area {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  padding: .5rem 0rem;
+  background-color: var(--dark);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+}
+
+.links-area a {
+  position: relative;
+  top: 0;
+  transition: all ease 0.5s;
+  filter: brightness(100%);
+}
+
+.links-area a:hover {
+  top: -3px;
+  filter: brightness(130%);
+}
+
+a.labs {
+  rotate: 0deg;
+  transition: rotate ease 1s;
+}
+
+a.labs:hover {
+  rotate: 55deg;
+  top: 0px !important;
 }
