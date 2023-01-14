@@ -1,5 +1,11 @@
+:root {
+  --light: cornsilk;
+  --less-light: rgb(159, 142, 73);
+  --dark: rgb(45, 31, 25);
+}
+
 body {
-  background-color: cornsilk;
+  background-color: var(--light);
   margin: 0rem;
 }
 
@@ -7,13 +13,33 @@ body {
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
-  background-color: rgb(45, 31, 25);
+  background-color: var(--dark);
   padding: 1rem;
   margin: 0rem;
   width: 100vw;
-  color: cornsilk;
+  color: var(--light);
   position: sticky;
   top: 0px;
+  font-family: sans-serif;
+}
+
+.accordion {
+  padding: 1px 3px 2px 5px;
+  border: solid 1px;
+  border-radius: 3px;
+  width: 3rem;
+
+}
+
+.info-section {
+  max-width: 50rem;
+
+}
+
+b.head {
+  color: var(--less-light);
+
+
 }
 
 button {
@@ -32,9 +58,6 @@ button {
   row-gap: 0.5rem;
 }
 
-#row-two {
-}
-
 #progress-outer {
   width: 100px;
   height: 25px;
@@ -48,6 +71,7 @@ button {
   height: 23px;
   padding: 2px 0px 0px 0px;
 }
+
 #progress-label {
   padding: 2px 0px 0px 4px;
 }
@@ -55,16 +79,20 @@ button {
 .blink {
   animation: blinker 2s linear infinite;
 }
+
 @keyframes blinker {
   0% {
     opacity: 1;
   }
+
   45% {
     opacity: 0;
   }
+
   55% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -78,26 +106,37 @@ h2 {
 h1:before {
   content: "<h1>";
   font-size: 1rem;
+  color: var(--less-light)
 }
+
 h2:before {
   content: "<h2>";
   font-size: 1rem;
+  color: var(--less-light)
 }
+
 h3:before {
   content: "<h3>";
   font-size: 1rem;
+  color: var(--less-light)
 }
+
 h4:before {
   content: "<h4>";
   font-size: 1rem;
+  color: var(--less-light)
 }
+
 h5:before {
   content: "<h5>";
   font-size: 1rem;
+  color: var(--less-light)
 }
+
 h6:before {
   content: "<h6>";
   font-size: 1rem;
+  color: var(--less-light)
 }
 
 h1.section {
@@ -127,9 +166,11 @@ header ul {
 .hide-content ol {
   display: none;
 }
+
 .hide-content span {
   display: inline !important;
 }
+
 .hide-content h1,
 .hide-content h2,
 .hide-content h3,
@@ -144,18 +185,22 @@ header ul {
 .hide-content h2 {
   margin-left: 1rem;
 }
+
 .hide-content h3 {
   margin-left: 2rem;
   color: gray;
 }
+
 .hide-content h4 {
   margin-left: 3rem;
   color: gray;
 }
+
 .hide-content h5 {
   margin-left: 4rem;
   color: gray;
 }
+
 .hide-content h6 {
   margin-left: 5rem;
   color: gray;
@@ -165,15 +210,11 @@ header ul {
   margin-top: 1rem !important;
 }
 
-/* .hide-content h1::before,
-.hide-content h2::before {
-  content: "";
-} */
-
 span.pli-lang {
   display: block;
   font-weight: bold;
 }
+
 span.eng-lang {
   display: block;
 }
@@ -182,6 +223,7 @@ p.pli-verse {
   margin-bottom: 0.3rem;
   margin-left: 1rem;
 }
+
 p.eng-verse {
   margin-bottom: 1rem;
   margin-top: 0rem;
