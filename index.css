@@ -1,7 +1,7 @@
 :root {
   --light: cornsilk;
   --less-light: rgb(159, 142, 73);
-  --dark: rgb(45, 31, 25);
+  --dark: #2d1f19;
 }
 
 body {
