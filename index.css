@@ -36,8 +36,8 @@ body {
   padding: 1px 3px 2px 5px;
   border: solid 1px;
   border-radius: 3px;
-  width: 3rem;
-
+  width: 2.5rem;
+  font-size: .8rem;
 }
 
 .info-section {
@@ -113,37 +113,37 @@ h2 {
 }
 
 h1:before {
-  content: "<h1>";
+  content: "【h1】";
   font-size: 1rem;
   color: var(--less-light)
 }
 
 h2:before {
-  content: "<h2>";
+  content: "【h2】";
   font-size: 1rem;
   color: var(--less-light)
 }
 
 h3:before {
-  content: "<h3>";
+  content: "【h3】";
   font-size: 1rem;
   color: var(--less-light)
 }
 
 h4:before {
-  content: "<h4>";
+  content: "【h4】";
   font-size: 1rem;
   color: var(--less-light)
 }
 
 h5:before {
-  content: "<h5>";
+  content: "【h5】";
   font-size: 1rem;
   color: var(--less-light)
 }
 
 h6:before {
-  content: "<h6>";
+  content: "【h6】";
   font-size: 1rem;
   color: var(--less-light)
 }

@@ -1,4 +1,4 @@
-export default function buildSuttaHtml(paliData, transData, htmlData, article, bookLength, start) {
+export default function makeSuttaHtml(paliData, transData, htmlData, article, bookLength) {
   let paliVerse = "<p class='pli-verse'>";
   let englishVerse = "<p class='eng-verse'>";
   let inAVerse = false;
@@ -21,11 +21,17 @@ export default function buildSuttaHtml(paliData, transData, htmlData, article, b
   Object.keys(htmlData).forEach(section => {
     let htmlWrapper = htmlData[section];
 
-    // if Pali title and English title are identical, delete one of them
+    // if Pali title and English title are identical, delete English
     if (/<h/.test(htmlWrapper) && paliData[section] === transData[section]) {
       if (includePali) {
         transData[section] = "";
       }
+    }
+
+    // If <j> is being converted to a class
+    if (localStorage.enjambment && /\<j\>/.test(transData[section])) {
+      console.log("found");
+      transData[section] = transData[section].replace(/\<j\>/, '<span class="enjambment">');
     }
 
     // OK, so the bit below is hard coded to always include the Pali in the headings and always remove the number from the English segment. The code was originally written with the assumption that when pali was not included in the text, then it should not be included in the headings.
@@ -115,7 +121,8 @@ export default function buildSuttaHtml(paliData, transData, htmlData, article, b
     }
   });
   const articleElement = document.getElementById(article);
-  html = html.replace("</article>", "").replace(/<article id=".+?">/, "");
+
+  // html = html.replace("</article>", "").replace(/<article id=".+?">/, "");
   articleElement.outerHTML = html;
   localStorage.completionCounter++;
   const progressBar = document.getElementById("progress-bar");
@@ -123,11 +130,7 @@ export default function buildSuttaHtml(paliData, transData, htmlData, article, b
   progressBar.style.width = width + "%";
 
   if (localStorage.completionCounter == bookLength) {
-    var finish = new Date();
-    // console.log("seconds " + (finish - start) / 1000);
-    // alert("Book is complete");
-
-    const progressLable = document.getElementById("progress-label");
-    progressLable.innerHTML = "Finished";
+    const progressLabel = document.getElementById("progress-label");
+    progressLabel.innerHTML = "Finished";
   }
 }

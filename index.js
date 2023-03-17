@@ -14,10 +14,10 @@ suttaTable.innerHTML = "";
 const makeBookButton = document.getElementById("make-the-book");
 makeBookButton.addEventListener("click", () => {
   suttaTable.innerHTML = "";
-  const progressLable = document.getElementById("progress-label");
+  const progressLabel = document.getElementById("progress-label");
   const progressBar = document.getElementById("progress-bar");
   const progressOuter = document.getElementById("progress-outer");
-  progressLable.innerHTML = "Working<span class='blink'>…</span>";
+  progressLabel.innerHTML = "Working<span class='blink'>…</span>";
   progressBar.style.width = "0%";
   progressOuter.style.border = "solid 1px rgb(67, 67, 67)";
   setTimeout(() => {
@@ -40,15 +40,15 @@ tocButton.addEventListener("click", () => {
 //
 function makeTheBook() {
   const selection = document.getElementById("selection").value;
-  const [slug, translator] = selection.split("|");
-  const bookContents = books[slug];
+  const [bookAbbreviation, translator] = selection.split("|");
+  const bookContents = books[bookAbbreviation];
+  const lenghtOfBook = bookContents.length;
   localStorage.completionCounter = 0;
-  var start = new Date();
-  buildTitlePage(slug, translator);
+  buildTitlePage(bookAbbreviation, translator);
 
   bookContents.forEach(article => {
+    // article will be either a uid or the contents of the chapter/section title page
     if (/chapter/.test(article) || /section/.test(article)) {
-      // this detects when there is a chapter title page that must be created
       let [id, paliTitle, englishTitle] = article.split("|");
       suttaTable.innerHTML += `<article id="${id}">
     <div class="title">
@@ -60,20 +60,19 @@ function makeTheBook() {
     </article>\n`;
       localStorage.completionCounter++;
       const progressBar = document.getElementById("progress-bar");
-      const width = (localStorage.completionCounter / bookContents.length) * 100;
+      const width = (localStorage.completionCounter / lenghtOfBook) * 100;
       progressBar.style.width = width + "%";
 
-      if (localStorage.completionCounter === bookContents.length) {
-        const progressLable = document.getElementById("progress-label");
-        progressLable.innerHTML = "Finished";
-        var finish = new Date();
-        console.log(finish - start);
+      if (localStorage.completionCounter === lenghtOfBook) {
+        const progressLabel = document.getElementById("progress-label");
+        progressLabel.innerHTML = "Finished";
       }
     } else {
       // this adds the article tag into the dom for each sutta.
       suttaTable.innerHTML += `<article id="${article}"></article>\n`;
       // This starts the process of building the sutta that will be put into that above dom item when the process is finished.
-      buildSutta(`${slug}/${article}`, article, translator, bookContents.length, start);
+
+      buildSutta(bookAbbreviation, article, translator, lenghtOfBook);
     }
   });
 }

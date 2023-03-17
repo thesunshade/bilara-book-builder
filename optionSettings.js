@@ -35,6 +35,17 @@ export default function optionSettings() {
     localStorage.pali = paliCheck.checked;
   });
 
+  // enjambment
+  const enjambmentCheck = document.getElementById("enjambment");
+  if (localStorage.enjambment === undefined) {
+    localStorage.enjambment = false;
+  } else {
+    enjambmentCheck.checked = JSON.parse(localStorage.enjambment);
+  }
+  enjambmentCheck.addEventListener("click", () => {
+    localStorage.enjambment = enjambmentCheck.checked;
+  });
+
   // LOCAL
   const localCheck = document.getElementById("local");
   if (localStorage.local === undefined) {
