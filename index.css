@@ -1,3 +1,14 @@
+.side-by-side .segment-pair {
+  display: flex;
+  flex-direction: row;
+}
+
+.side-by-side .eng-lang,
+.side-by-side .pli-lang {
+  width: 50%
+}
+
+
 :root {
   --light: cornsilk;
   --less-light: rgb(159, 142, 73);

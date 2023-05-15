@@ -1,4 +1,4 @@
-export default function makeSuttaHtml(paliData, transData, htmlData, article, bookLength) {
+export default function makeSuttaHtml(bookAbbreviation, paliData, transData, htmlData, article, bookLength) {
   let paliVerse = "<p class='pli-verse'>";
   let englishVerse = "<p class='eng-verse'>";
   let inAVerse = false;
@@ -30,7 +30,7 @@ export default function makeSuttaHtml(paliData, transData, htmlData, article, bo
 
     // If <j> is being converted to a class
     if (localStorage.enjambment && /\<j\>/.test(transData[section])) {
-      console.log("found");
+      console.log("found enjambment");
       transData[section] = transData[section].replace(/\<j\>/, '<span class="enjambment">');
     }
 
@@ -81,13 +81,25 @@ export default function makeSuttaHtml(paliData, transData, htmlData, article, bo
       }
     }
 
-    const [openHtml, closeHtml] = htmlWrapper.split(/{}/);
+    let [openHtml, closeHtml] = htmlWrapper.split(/{}/);
+
+    if ("kn/dhp" == bookAbbreviation) {
+      openHtml = openHtml.replace(/<article .+?>/, "");
+      closeHtml = closeHtml.replace(/<\/article>/, "");
+    }
+
     if (/<p><span class='verse-line'>/.test(openHtml)) {
       inAVerse = true;
     }
+    let verseNumberHtml = "";
     if (inAVerse) {
       if (includePali) {
-        paliVerse += `<span class="pli-lang" id="${section}">${paliData[section]}</span>`;
+        if (/dhp\d+?:1$/.test(section)) {
+          const verseNumber = section.match(/dhp(\d+?):1$/)[1];
+          verseNumberHtml = `<span class="verse-number">${verseNumber}.&nbsp;</span>`;
+        }
+
+        paliVerse += `<span class="pli-lang" id="${section}">${verseNumberHtml}${paliData[section]}</span>`;
       } else {
         paliVerse = "";
       }
@@ -114,12 +126,13 @@ export default function makeSuttaHtml(paliData, transData, htmlData, article, bo
         translationPart = `${transData[section]}`;
       }
 
-      html += `${openHtml}
+      html += `${openHtml}<span class="segment-pair">
         ${includePali || isHeading(htmlWrapper) ? `<span class="pli-lang">${paliData[section]}</span>` : ""}${
         !transData[section] ? "" : translationPart
-      }${closeHtml}`;
+      }</span>${closeHtml}`;
     }
   });
+
   const articleElement = document.getElementById(article);
 
   // html = html.replace("</article>", "").replace(/<article id=".+?">/, "");

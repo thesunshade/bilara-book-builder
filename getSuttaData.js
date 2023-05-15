@@ -1,8 +1,13 @@
 // bookLength is the number of suttas + number of headings
 
+/*
+ * This function collects the data for each sutta, either from local or API
+ * and then calls the makeSuttaHtml() function
+ */
+
 import makeSuttaHtml from "./makeSuttaHtml.js";
 
-export default function buildSutta(bookAbbreviation, article, translator, bookLength) {
+export default function getSuttaData(bookAbbreviation, article, translator, bookLength) {
   // const counter = document.querySelector("#counter");
 
   if (JSON.parse(localStorage.local) === true) {
@@ -18,7 +23,7 @@ export default function buildSutta(bookAbbreviation, article, translator, bookLe
     // work with all the local data once it is fetched
     Promise.all([rootResponse, translationResponse, htmlResponse]).then(responses => {
       let [paliData, transData, htmlData] = responses;
-      makeSuttaHtml(paliData, transData, htmlData, article, bookLength);
+      makeSuttaHtml(bookAbbreviation, paliData, transData, htmlData, article, bookLength);
     });
   } else {
     // fetch the information to build the sutta from API
@@ -28,7 +33,7 @@ export default function buildSutta(bookAbbreviation, article, translator, bookLe
       .then(response => response.json())
       .then(data => {
         const { html_text, translation_text, root_text } = data;
-        makeSuttaHtml(root_text, translation_text, html_text, article, bookLength);
+        makeSuttaHtml(bookAbbreviation, root_text, translation_text, html_text, article, bookLength);
       });
   }
 }
