@@ -1,6 +1,6 @@
 export default function makeSuttaHtml(bookAbbreviation, paliData, transData, htmlData, article, bookLength) {
-  let paliVerse = "<span class='pli-verse segment'>";
-  let englishVerse = "<span class='eng-verse segment'>";
+  let paliVerse = "<p class='pli-verse'>";
+  let englishVerse = "<p class='eng-verse'>";
   let inAVerse = false;
   let html = "";
   let suttaNumber = article.match(/(\d*\.*\d*-*\d+)$/g)[0].replace("-", "–");
@@ -84,7 +84,6 @@ export default function makeSuttaHtml(bookAbbreviation, paliData, transData, htm
     let [openHtml, closeHtml] = htmlWrapper.split(/{}/);
 
     if ("kn/dhp" == bookAbbreviation) {
-      // this is needed because Dhp chapters have multiple articles within them
       openHtml = openHtml.replace(/<article .+?>/, "");
       closeHtml = closeHtml.replace(/<\/article>/, "");
     }
@@ -109,26 +108,26 @@ export default function makeSuttaHtml(bookAbbreviation, paliData, transData, htm
       if (/<span class='verse-line'>{}<\/span><\/p>/.test(htmlData[section])) {
         inAVerse = false;
         if (includePali) {
-          html += `<p class="verse"><span class="segment-pair">${paliVerse}</span> ${englishVerse}</span></span><p>`;
+          html += paliVerse + "</p>" + englishVerse + "</p>";
         } else {
-          html += `<p class="verse">${englishVerse}</span></p>`;
+          html += englishVerse + "</p>";
         }
-        paliVerse = "<span class='pli-verse segment'>";
-        englishVerse = "<span class='eng-verse segment'>";
+        paliVerse = "<p class='pli-verse'>";
+        englishVerse = "<p class='eng-verse'>";
       }
     } else {
       // not in a verse
       let translationPart = "";
 
       if (includePali || isHeading(htmlWrapper)) {
-        translationPart = `<span class="eng-lang segment">${transData[section]}</span>`;
+        translationPart = `<span class="eng-lang">${transData[section]}</span>`;
       } else {
         // there is no need to put the translation in language spans if there is no Pali
         translationPart = `${transData[section]}`;
       }
 
       html += `${openHtml}<span class="segment-pair">
-        ${includePali || isHeading(htmlWrapper) ? `<span class="pli-lang segment">${paliData[section]}</span>` : ""}${
+        ${includePali || isHeading(htmlWrapper) ? `<span class="pli-lang">${paliData[section]}</span>` : ""}${
         !transData[section] ? "" : translationPart
       }</span>${closeHtml}`;
     }

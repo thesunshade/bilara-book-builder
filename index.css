@@ -3,10 +3,11 @@
   flex-direction: row;
 }
 
-.side-by-side .eng-lang,
-.side-by-side .pli-lang {
+.side-by-side .segment {
   width: 50%
 }
+
+
 
 
 :root {
