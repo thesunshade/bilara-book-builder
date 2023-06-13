@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
     <title>Make-a-Book</title>
 
     <meta name="theme-color" content="#2d1f19" />
@@ -15,118 +14,98 @@
     <meta property="og:url" content="https://build.readingfaithfully.org/" />
     <meta property="og:site_name" content="Build.ReadingFaithfully.org" />
     <meta property="og:image" itemprop="image" content="/featuredImage-build.png" />
+  </head>
 
-</head>
-
-<body class="">
+  <body class="">
     <div class="controls">
-        <div id="row-one">
-            <img src="./favicon.png" height="25px">
-            <select id="selection">
-                <option value="dn|sujato">Dīgha Nikāya, B. Sujato</option>
-                <option value="mn|sujato">Majjhima Nikāya, B. Sujato</option>
-                <option value="sn|sujato">Saṁyutta Nikāya, B. Sujato</option>
-                <option value="an|sujato">Aṅguttara Nikāya, B. Sujato</option>
-                <option value="kn/kp|sujato">Khuddakapāṭha, B. Sujato</option>
-                <option value="kn/dhp|sujato">Dhammapada, B. Sujato</option>
-                <option value="kn/ud|sujato">Udāna, B. Sujato</option>
-                <option value="kn/iti|sujato">Itivuttaka, B. Sujato</option>
-                <option value="kn/snp|sujato">Sutta Nipāta, B. Sujato</option>
-                <option value="kn/thag|sujato">Theragāthā, B. Sujato</option>
-                <option value="kn/thig|soma">Therīgāthā, Ayya Soma</option>
-                <option value="kn/thig|sujato">Therīgāthā, B. Sujato</option>
-                <option value="pli-tv-bu-vb|brahmali">Bhikkhu Vibhanga, B. Brahmali</option>
-                <option value="pli-tv-bi-vb|brahmali">Bhikkhuni Vibhanga, B. Brahmali</option>
-                <option value="pli-tv-kd|brahmali">Khandhaka, B. Brahmali</option>
-                <option value="pli-tv-pvr|brahmali">Parivāra, B. Brahmali</option>
-                <option value="pli-tv-bu-vbcomplete|brahmali">Complete Vinaya, B. Brahmali</option>
-            </select>
-            <button id="make-the-book">Make It</button>
-            <button id="copy">Copy It</button>
-            <button id="toc" title="Hides most of the content of the book">Toggle ToC</button>
-            <!-- <span id="counter"></span> -->
+      <div id="row-one">
+        <span class="hide-mobile"><img src="./favicon.png" height="25px" /></span>
+        <select id="selection">
+          <option value="dn|sujato">Dīgha Nikāya, B. Sujato</option>
+          <option value="mn|sujato">Majjhima Nikāya, B. Sujato</option>
+          <option value="sn|sujato">Saṁyutta Nikāya, B. Sujato</option>
+          <option value="an|sujato">Aṅguttara Nikāya, B. Sujato</option>
+          <option value="kn/kp|sujato">Khuddakapāṭha, B. Sujato</option>
+          <option value="kn/dhp|sujato">Dhammapada, B. Sujato</option>
+          <option value="kn/ud|sujato">Udāna, B. Sujato</option>
+          <option value="kn/iti|sujato">Itivuttaka, B. Sujato</option>
+          <option value="kn/snp|sujato">Sutta Nipāta, B. Sujato</option>
+          <option value="kn/thag|sujato">Theragāthā, B. Sujato</option>
+          <option value="kn/thig|soma">Therīgāthā, Ayya Soma</option>
+          <option value="kn/thig|sujato">Therīgāthā, B. Sujato</option>
+          <option value="pli-tv-bu-vb|brahmali">Bhikkhu Vibhanga, B. Brahmali</option>
+          <option value="pli-tv-bi-vb|brahmali">Bhikkhuni Vibhanga, B. Brahmali</option>
+          <option value="pli-tv-kd|brahmali">Khandhaka, B. Brahmali</option>
+          <option value="pli-tv-pvr|brahmali">Parivāra, B. Brahmali</option>
+          <option value="pli-tv-bu-vbcomplete|brahmali">Complete Vinaya, B. Brahmali</option>
+        </select>
+        <button id="make-the-book">Make<span class="hide-mobile"> It</span></button>
+        <button id="copy">Copy<span class="hide-mobile"> It</span></button>
+        <button id="toc" title="Hides most of the content of the book">Toggle ToC</button>
+        <!-- <span id="counter"></span> -->
 
-            <div id="progress-outer">
-                <div id="progress-bar">
-                    <div id="progress-label"></div>
-                </div>
-            </div>
+        <div id="progress-outer">
+          <div id="progress-bar">
+            <div id="progress-label"></div>
+          </div>
         </div>
+      </div>
 
+      <div id="row-two">
+        <label><input type="checkbox" id="step-down" />Step down <span class="hide-mobile">sutta </span>headings</label>
+        <label><input type="checkbox" id="flatten" />Flatten subheadings<span class="hide-mobile"> to classes</span></label>
+        <label><input type="checkbox" id="pali" /><span class="hide-mobile">Include </span>Pāli</label>
+        <label><input type="checkbox" id="include-refrence" /><span class="hide-mobile">Include </span>Refrence numbers</label>
+        <label><input type="checkbox" id="enjambment" />Convert &lt;j&gt;<span class="hide-mobile"> to class</span></label>
+        <label><input type="checkbox" id="english-first" />English first</label>
+        <label><input type="checkbox" id="html-page-wrapper" /><span class="hide-mobile">Add </span>HTML page wrapper</label>
+        <label id="local-option"><input type="checkbox" id="local" /><span class="hide-mobile">Build from local</span></label>
+      </div>
 
-        <div id="row-two">
-            <label><input type="checkbox" id="step-down">Step down sutta headings</label>
-            <label><input type="checkbox" id="flatten">Flatten subheadings to classes</label>
-            <label><input type="checkbox" id="pali">Include Pāli</label>
-            <label><input type="checkbox" id="enjambment">Convert &lt;j&gt; to class</label>
-            <label id="local-option"><input type="checkbox" id="local">Build from local</label>
+      <details>
+        <summary class="accordion">Info.</summary>
+        <div class="info-section">
+          <p><b>Caution:</b> This tool will download complete copies of each book from SuttaCentral.net. For some books this will mean downloading <em>thousands</em> of suttas. Please use discretion.</p>
+          <p>The heading tags you can see in the book in the viewer below are just there to show the underlying code. The code you copy will display as usual.</p>
+          <p><b class="head">Toggle ToC</b> simply hides most of the content of the book. It only affects display in this app, not the final code.</p>
+          <p><b class="head">Step down sutta headings</b> will decrease the heading levels for the text. This is useful if you want chapter pages to be a level above the suttas.</p>
+          <p><b class="head">Flatten subheadings to classes</b> will change subheadings from h tags to p tags with classes for each level.</p>
+          <p>
+            <b class="head"><span class="hide-mobile">Include </span>Refrence numbers</b> will add the manuscript refrence numbers.</p>
+            <b class="head">Convert &lt;j&gt; to class</b> will replace <code>&lt;j&gt;</code> with
+            <code>&lt;span&nbsp;class="enjambment"&gt;</code>
+          </p>
+          <p><b class="head">English First</b> puts the English segment first in the segment-pair span.</p>
+          <p><b class="head">Add HTML page wrapper</b> will add the necessary HTML so the code copied is a functioning web page, including some sample CSS.</p>
         </div>
-
-
-
-        <details>
-            <summary class="accordion">Info.</summary>
-            <div class="info-section">
-                <p><b>Caution:</b> This tool will download complete copies of each book from SuttaCentral.net. For
-                    some
-                    books this will mean downloading <em>thousands</em> of suttas. Please use discretion.</p>
-                <p>The heading tags you can see in the book in the viewer below are just there to show the
-                    underlying
-                    code. The code you copy will display as usual.</p>
-                <p><b class="head">Toggle ToC</b> simply hides most of the content of the book.</p>
-                <p><b class="head">Step down sutta headings</b> will decrease the heading levels for the text. This
-                    is useful if
-                    you
-                    want chapter pages to be a level above the suttas.</p>
-                <p><b class="head">Flatten subheadings to classes</b> will change subheadings from h tags to p tags
-                    with classes for each level.</p>
-                <p><b class="head">Convert &lt;j&gt; to class</b> will replace <code>&lt;j&gt;</code> with
-                    <code>&lt;span&nbsp;class="enjambment"&gt;</code></p>
-            </div>
-        </details>
-
+      </details>
     </div>
     <div id="standoff-display-area" class="standoff-display-area"></div>
     <div id="sutta-html" class="sutta-table"></div>
 
-    <div class="links-area" style="text-align: center;">
-        <!--RF MAIN-->
-        <a href="http://readingfaithfully.org" title="Support for your sutta readng practice" rel="noreferrer"
-            target="_blank"><img width="20px" alt="ReadingFaithfully.org icon" src="./images/favicon-rf-tan.png"></a>
-        <!--DAILY-->
-        <a href="http://daily.readingfaithfully.org" title="Daily Suttas" rel="noreferrer" target="_blank"><img
-                width="20px" alt="Daily ReadingFaithfully.org icon" src="./images/favicon-drf-tan.png"></a>
-        <!--CITATION HELPER-->
-        <a href="https://sutta.readingfaithfully.org" title="Citation Lookup Tool" rel="noreferrer" target="_blank"><img
-                width="20px" src="./images/favicon-citaton-helper-tan.png" alt="Citation Lookup tool icon"></a>
-        <!--NAME SEARCH-->
-        <a href="https://name.readingfaithfully.org" title="Search for suttas by name" rel="noreferrer"
-            target="_blank"><img width="20px" src="./images/favicon-name-tan.png" alt="Sutta Name Search icon"></a>
-        <!--PED-->
-        <a href="https://ped.readingfaithfully.org" title="A lightweight interface for the PED" rel="noreferrer"
-            target="_blank"><img width="20px" src="./images/favicon-ped-tan.png"
-                alt="SuttaCentral.org Lightweight interface icon"></a>
-        <!--DPPN-->
-        <a href="https://dppn.readingfaithfully.org" title="A lightweight interface the Dictionary of Pali Proper Names"
-            rel="noreferrer" target="_blank"><img width="20px" src="./images/favicon-dppn-tan.png"
-                alt="DPPN search icon"></a>
-        <!--SC LIGHT-->
-        <a href="https://sc.readingfaithfully.org" title="An ultra lightweight interface for SuttaCentral.net"
-            rel="noreferrer" target="_blank"><img width="20px" src="./images/favicon-sc-light-tan.png"
-                alt="SC Light icon"></a>
-        <!--Labs-->
-        <a href="https://readingfaithfully.org/lab/" title="Other tools under development" rel="noreferrer"
-            target="_blank" class="labs">
-            <img class="icon" width="19px" src="./images/favicon-labs-tan.png" style="position: relative ; top: 1px"
-                alt="Labs icon" />
-        </a>
-        <!--GITHUB-->
-        <a href="https://github.com/thesunshade/bilara-book-builder/tree/main#readme"
-            title="The source code for this site" rel="noreferrer" target="_blank"><img width="20px"
-                src="./images/favicon-GitHub-tan.png" alt="GitHub icon"></a>
+    <div class="links-area" style="text-align: center">
+      <!--RF MAIN-->
+      <a href="http://readingfaithfully.org" title="Support for your sutta readng practice" rel="noreferrer" target="_blank"><img width="20px" alt="ReadingFaithfully.org icon" src="./images/favicon-rf-tan.png" /></a>
+      <!--DAILY-->
+      <a href="http://daily.readingfaithfully.org" title="Daily Suttas" rel="noreferrer" target="_blank"><img width="20px" alt="Daily ReadingFaithfully.org icon" src="./images/favicon-drf-tan.png" /></a>
+      <!--CITATION HELPER-->
+      <a href="https://sutta.readingfaithfully.org" title="Citation Lookup Tool" rel="noreferrer" target="_blank"><img width="20px" src="./images/favicon-citaton-helper-tan.png" alt="Citation Lookup tool icon" /></a>
+      <!--NAME SEARCH-->
+      <a href="https://name.readingfaithfully.org" title="Search for suttas by name" rel="noreferrer" target="_blank"><img width="20px" src="./images/favicon-name-tan.png" alt="Sutta Name Search icon" /></a>
+      <!--PED-->
+      <a href="https://ped.readingfaithfully.org" title="A lightweight interface for the PED" rel="noreferrer" target="_blank"><img width="20px" src="./images/favicon-ped-tan.png" alt="SuttaCentral.org Lightweight interface icon" /></a>
+      <!--DPPN-->
+      <a href="https://dppn.readingfaithfully.org" title="A lightweight interface the Dictionary of Pali Proper Names" rel="noreferrer" target="_blank"><img width="20px" src="./images/favicon-dppn-tan.png" alt="DPPN search icon" /></a>
+      <!--SC LIGHT-->
+      <a href="https://sc.readingfaithfully.org" title="An ultra lightweight interface for SuttaCentral.net" rel="noreferrer" target="_blank"><img width="20px" src="./images/favicon-sc-light-tan.png" alt="SC Light icon" /></a>
+      <!--Labs-->
+      <a href="https://readingfaithfully.org/lab/" title="Other tools under development" rel="noreferrer" target="_blank" class="labs">
+        <img class="icon" width="19px" src="./images/favicon-labs-tan.png" style="position: relative; top: 1px" alt="Labs icon" />
+      </a>
+      <!--GITHUB-->
+      <a href="https://github.com/thesunshade/bilara-book-builder/tree/main#readme" title="The source code for this site" rel="noreferrer" target="_blank"><img width="20px" src="./images/favicon-GitHub-tan.png" alt="GitHub icon" /></a>
     </div>
 
     <script type="module" src="index.js"></script>
-</body>
-
+  </body>
 </html>

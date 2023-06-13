@@ -46,6 +46,39 @@ export default function optionSettings() {
     localStorage.enjambment = enjambmentCheck.checked;
   });
 
+  // English first
+  const englishFirstCheck = document.getElementById("english-first");
+  if (localStorage.englishFirst === undefined) {
+    localStorage.englishFirst = false;
+  } else {
+    englishFirstCheck.checked = JSON.parse(localStorage.englishFirst);
+  }
+  englishFirstCheck.addEventListener("click", () => {
+    localStorage.englishFirst = englishFirstCheck.checked;
+  });
+
+  // HTML page wrapper
+  const htmlPageWrapperCheck = document.getElementById("html-page-wrapper");
+  if (localStorage.htmlPageWrapper === undefined) {
+    localStorage.htmlPageWrapper = false;
+  } else {
+    htmlPageWrapperCheck.checked = JSON.parse(localStorage.htmlPageWrapper);
+  }
+  htmlPageWrapperCheck.addEventListener("click", () => {
+    localStorage.htmlPageWrapper = htmlPageWrapperCheck.checked;
+  });
+
+  // include refrence numbers
+  const includeRefrenceCheck = document.getElementById("include-refrence");
+  if (localStorage.includeRefrence === undefined) {
+    localStorage.includeRefrence = false;
+  } else {
+    includeRefrenceCheck.checked = JSON.parse(localStorage.includeRefrence);
+  }
+  includeRefrenceCheck.addEventListener("click", () => {
+    localStorage.includeRefrence = includeRefrenceCheck.checked;
+  });
+
   // LOCAL
   const localCheck = document.getElementById("local");
   if (localStorage.local === undefined) {

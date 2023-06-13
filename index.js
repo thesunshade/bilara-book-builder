@@ -36,7 +36,100 @@ makeBookButton.addEventListener("click", () => {
 // COPY BUTTON
 const copyButton = document.getElementById("copy");
 copyButton.addEventListener("click", () => {
-  navigator.clipboard.writeText(suttaTable.innerHTML);
+  const selection = document.getElementById("selection").value;
+  const HTML_OPEN = `<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>${selection}</title>
+     <style>
+      /* Not all of this CSS may be necessary based on the build options you picked*/
+
+      .reference {
+        background-color: rgb(96, 77, 0);
+        color: white;
+        font-family: sans-serif;
+        font-size: 0.7rem;
+        border: solid 0px;
+        border-radius: 5px;
+        padding: 2px 4px 2px 2px;
+        display: inline;
+      }
+
+      header ul {
+        display: none;
+      }
+
+      /* Book frontmatter */
+
+      .center {
+        text-align: center;
+      }
+
+      .italic {
+        font-style: italic;
+      }
+
+      .large {
+        font-size: 1.3rem;
+      }
+
+      .top-margin {
+        margin-top: 1rem;
+      }
+
+      /*Sutta Content*/
+
+      p.pli-verse {
+        margin-bottom: 0.3rem;
+        margin-left: 1rem;
+      }
+
+      span.pli-lang {
+        display: block;
+        font-weight: bold;
+      }
+
+      span.eng-lang {
+        display: block;
+      }
+
+      /*Activate code below to display segments side by side*/
+      /*Do not use for English only books*/
+      /* 
+      p.eng-verse {
+        margin-bottom: 1rem;
+        margin-top: 0rem;
+        margin-left: 1rem;
+      }
+
+      .segment-pair {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .segment {
+        width: 50%;
+      }
+
+      span.pli-lang {
+        display: block;
+        font-weight: bold;
+      }
+
+ */
+    </style>
+ </head>
+ <body>
+ `;
+  const HTML_CLOSE = `
+</body>
+</html>`;
+  if (localStorage.htmlPageWrapper) {
+    navigator.clipboard.writeText(HTML_OPEN + suttaTable.innerHTML + HTML_CLOSE);
+  } else navigator.clipboard.writeText(suttaTable.innerHTML);
 });
 
 // Toggle ToC BUTTON
@@ -61,10 +154,7 @@ function makeTheBook() {
       let [id, paliTitle, englishTitle] = article.split("|");
       suttaTable.innerHTML += `<article id="${id}" class="sectionpage">
     <div class="title">
-      <h1 title="${englishTitle}" class="${id.replace(
-        /\d+/,
-        ""
-      )}"><span class="pli-lang">${paliTitle}</span> <span class="eng-lang">${englishTitle}</span></h1>
+      <h1 title="${englishTitle}" class="${id.replace(/\d+/, "")}"><span class="pli-lang">${paliTitle}</span> <span class="eng-lang">${englishTitle}</span></h1>
   </div>
     </article>\n`;
       localStorage.completionCounter++;
@@ -81,7 +171,7 @@ function makeTheBook() {
       suttaTable.innerHTML += `<article id="${article}"></article>\n`;
 
       // This starts the process of building the sutta that will be put into that above dom item when the process is finished.
-      console.log(article);
+
       getSuttaData(bookAbbreviation, article, translator, lenghtOfBook);
     }
   });

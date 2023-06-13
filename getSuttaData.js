@@ -32,8 +32,8 @@ export default function getSuttaData(bookAbbreviation, article, translator, book
     fetch(`https://suttacentral.net/api/bilarasuttas/${book}/${translator}?lang=${language}`)
       .then(response => response.json())
       .then(data => {
-        const { html_text, translation_text, root_text } = data;
-        makeSuttaHtml(bookAbbreviation, root_text, translation_text, html_text, article, bookLength);
+        const { html_text, translation_text, root_text, reference_text } = data;
+        makeSuttaHtml(bookAbbreviation, root_text, translation_text, html_text, reference_text, article, bookLength);
       });
   }
 }
