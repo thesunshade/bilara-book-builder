@@ -56,6 +56,7 @@ copyButton.addEventListener("click", () => {
         border-radius: 5px;
         padding: 2px 4px 2px 2px;
         display: inline;
+        margin-right: .5rem;
       }
 
       header ul {
