@@ -1,3 +1,20 @@
+html,
+body {
+  height: 100%
+}
+
+
+body {
+  background-color: var(--light);
+  margin: 0rem;
+  overflow-x: hidden;
+  /* Hide horizontal scrollbar */
+
+  display: flex;
+  flex-direction: column;
+}
+
+
 .reference {
   background-color: rgb(96, 77, 0);
   color: white;
@@ -79,12 +96,6 @@ span.pli-lang {
 
 
 
-body {
-  background-color: var(--light);
-  margin: 0rem;
-  overflow-x: hidden;
-  /* Hide horizontal scrollbar */
-}
 
 .sutta-table {
   width: 100vw
@@ -334,10 +345,11 @@ header ul {
   justify-content: center;
   padding: .5rem 0rem;
   background-color: var(--dark);
-  position: fixed;
+  /* position: fixed;
   left: 0;
-  bottom: 0;
+  bottom: 0; */
   width: 100vw;
+  margin-top: auto
 }
 
 .links-area a {
