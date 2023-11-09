@@ -162,7 +162,6 @@ button {
 #progress-outer {
   width: 100px;
   height: 25px;
-  /* background-color: grey; */
   border: solid 0px rgb(67, 67, 67);
 }
 
@@ -345,9 +344,6 @@ header ul {
   justify-content: center;
   padding: .5rem 0rem;
   background-color: var(--dark);
-  /* position: fixed;
-  left: 0;
-  bottom: 0; */
   width: 100vw;
   margin-top: auto
 }

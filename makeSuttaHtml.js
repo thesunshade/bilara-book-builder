@@ -27,7 +27,8 @@ export default function makeSuttaHtml(bookAbbreviation, paliData, transData, htm
   Object.keys(htmlData).forEach(section => {
     let htmlWrapper = htmlData[section];
     let reference = "";
-    if (true) {
+  console.log(article)
+    if (localStorage.includeRefrence==true) {
       if (referenceData[section]) {
         const referenceArray = referenceData[section].split(", ");
         for (let i = 0; i < referenceArray.length; i++) {
