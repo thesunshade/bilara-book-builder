@@ -142,11 +142,11 @@ tocButton.addEventListener("click", () => {
 //
 function makeTheBook() {
   const selection = document.getElementById("selection").value;
-  const [bookAbbreviation, translator] = selection.split("|");
+  const [bookAbbreviation, translator, language] = selection.split("|");
   const bookContents = books[bookAbbreviation]; // array of section titles and ids for the current book
   const lenghtOfBook = bookContents.length;
   localStorage.completionCounter = 0;
-  buildTitlePage(bookAbbreviation, translator);
+  buildTitlePage(bookAbbreviation, translator, language);
   console.log(bookAbbreviation);
   bookContents.forEach(article => {
     // article will be either a uid or the contents of the chapter/section title page
@@ -173,7 +173,7 @@ function makeTheBook() {
 
       // This starts the process of building the sutta that will be put into that above dom item when the process is finished.
 
-      getSuttaData(bookAbbreviation, article, translator, lenghtOfBook);
+      getSuttaData(bookAbbreviation, article, translator, lenghtOfBook, language);
     }
   });
 }

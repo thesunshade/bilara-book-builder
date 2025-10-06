@@ -1,4 +1,4 @@
-export default function buildTitlePage(slug, translator) {
+export default function buildTitlePage(slug, translator, language) {
   const suttaTable = document.querySelector("#sutta-html");
   const titlePageArticle = document.createElement("article");
   titlePageArticle.setAttribute("id", "title-page");
@@ -6,12 +6,11 @@ export default function buildTitlePage(slug, translator) {
   descriptionPageArticle.setAttribute("id", "description-page");
 
   let book = slug.replace(/kn\//, "").replace(/complete/, "");
-  fetch(`https://suttacentral.net/api/publication_info/${book}/en/${translator}`)
+  fetch(`https://suttacentral.net/api/publication_info/${book}/${language}/${translator}`)
     .then(response => response.json())
     .then(data => {
       // console.log(data[0]);
-      let { author_name, translation_title, translation_subtitle, translation_process, translation_description } =
-        data[0];
+      let { author_name, translation_title, translation_subtitle, translation_process, translation_description } = data[0];
       const { license_type, license_abbreviation, license_url, license_statement } = data[0].license;
       const { publication_date, edition_url, publisher } = data[0].edition[0];
 
